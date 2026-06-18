@@ -1,4 +1,4 @@
-function ProductList({ products,addToFavorite,deleteFromFavorite }) {
+function ProductList({ products,addToFavorite,deleteFromFavorite,showDetails}) {
  return (
 
  <div className="row">
@@ -30,6 +30,12 @@ function ProductList({ products,addToFavorite,deleteFromFavorite }) {
       >
       Ajouter au favoris
       </button>
+      <button
+  className="btn btn-info btn-sm"
+  onClick={() => showDetails(product)}
+>
+  Détails
+</button>
             
     </div>
 

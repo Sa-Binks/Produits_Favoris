@@ -4,6 +4,7 @@ import ProductList from './components/ProductList'
 function App() {
     const [products, setProducts] = useState([])
     const [favorites, setFavorites] = useState([])
+    const [selectedProduct, setSelectedProduct] = useState(null)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
 
@@ -40,6 +41,9 @@ function App() {
     favorites.filter((item, i) => i !== index)
     )
   }
+    function showDetails(product) {
+  setSelectedProduct(product)
+  }
     
  return (
 
@@ -66,8 +70,27 @@ function App() {
     Aucun produit trouvé
     </div>
     )}
-  <ProductList products={products} addToFavorite={addToFavorite} deleteFromFavorite={deleteFromFavorite}/>
+  <ProductList products={products} showDetails={showDetails} addToFavorite={addToFavorite} deleteFromFavorite={deleteFromFavorite}/>
 
+    {selectedProduct && (
+
+  <div className="card mt-4">
+
+    <div className="card-body">
+
+      <h4>{selectedProduct.title}</h4>
+
+      <p>Prix : {selectedProduct.price} €</p>
+
+      <p>Catégorie : {selectedProduct.category}</p>
+
+      <p>Description : {selectedProduct.description}</p>
+
+    </div>
+
+  </div>
+
+)}
     <h3 className="mt-4">
       Favoris
     </h3>
